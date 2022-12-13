@@ -1,0 +1,85 @@
+html {
+    display: table;
+    margin: auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body{
+    background-image: url("../img/peakpx.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    align-items: flex-start;
+    display: flex;
+    font-size: 5em;
+    color: white;
+
+}
+
+form {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    flex: 0 1 auto;
+}
+
+
+#diddy {
+    width: 400px;
+    height: auto;
+}
+
+#banaanknop {
+
+    width: 40px;
+    height: 40px;
+    border: black solid 3px;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+#banaan {
+    width: 30px;
+}
+
+
+#level-bar{
+
+    width: 300px;
+    height: 40px;
+    border: black solid 3px;
+    border-radius: 3px;
+
+}
+
+#BarrelBar{
+
+    width: 300px;
+    height: 40px;
+    border: black solid 3px;
+    border-radius: 3px;
+
+}
+
+
+#barrelknop {
+
+    width: 40px;
+    height: 40px;
+    border: black solid 3px;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+#barrel {
+
+    width: 30px;
+}
