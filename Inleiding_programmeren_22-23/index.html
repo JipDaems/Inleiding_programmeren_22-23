@@ -11,58 +11,80 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Monkey game</h1>
-        <div class="label">
-            <input type="text" name="" id="" placeholder="lorum ipsum">
-            <button onclick="startGame()"></button>
-        </div>
-        <div class="img-container">
-            <img src="../Inleiding_programmeren_22-23/img/diddykong.png" alt="monkey" />
-        </div>
-
-        <div class="knop--container">
-            <div class="button--container">
-                <button onclick="bananaAction()" id="banana"
-                    style="background-image: url('../img/banana.webp')"></button>
-                <progress class="banana-progress" value="70" max="100"></progress>
-            </div>
-            <div class="button--container">
-                <button onclick="barrelAction()" id="banana"
-                    style="background-image: url('../img/barrel.webp')"></button>
-                <progress class="barrel-progress" value="70" max="100"></progress>
-            </div>
-        </div>
+<div class="container">
+    <h1>Monkey game</h1>
+    <div class="label">
+        <input type="text" name="" id="" placeholder="lorum ipsum">
+        <button onclick="startGame()" id="startGame"></button>
+    </div>
+    <div class="img-container">
+        <img id="diddyKong" src="#" alt="monkey"/>
     </div>
 
-    <script>
-        var isGameStarted = false
+    <div class="knop--container">
+        <div class="button--container">
+            <button id="banana"></button>
+            <progress id="bananaProgressBar" class="banana-progress" max="100"></progress>
+        </div>
+        <div class="button--container">
+            <button id="barrel" id="barrel"></button>
+            <progress id="barrelProgressBar" class="barrel-progress" max="100"></progress>
+        </div>
+    </div>
+</div>
 
-        function startGame() {
-            isGameStarted = true
-            if (isGameStarted) {
-                console.log(isGameStarted)
-                alert('game has begon')
-            }
+<script>
+    let isGameStarted = false;
+    let diddyLevel = 0;
+    let diddyKong = document.getElementById('diddyKong');
+
+    let progressBarBanana = document.getElementById('bananaProgressBar').value = 50
+    let progressBarBarrel = document.getElementById('barrelProgressBar').value = 50
+
+    let bananaButton = document.getElementById("banana")
+    let barrelButton = document.getElementById("barrel")
+
+    switch (diddyLevel) {
+        case 0:
+            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png";
+            console.log(diddyLevel)
+            break;
+        case 1:
+            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png";
+            console.log(diddyLevel)
+            break;
+        case 2:
+            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddydonkey.jpeg";
+            console.log(diddyLevel)
+            break;
+    }
+
+    function startGame() {
+        isGameStarted = true
+        console.log(isGameStarted)
+    }
+
+    bananaButton.addEventListener("click", function () {
+
+        if (isGameStarted) {
+            console.log('bananaAction')
+        } else {
+            console.log('game is nog niet begonnen')
         }
 
-        function bananaAction() {
-            if (isGameStarted) {
-                console.log('bananaAction')
-            }else{
-                console.log('game has not started')
-            }
+    })
+    barrelButton.addEventListener("click", function () {
+
+        if (isGameStarted) {
+            console.log('barrelAction')
+        } else {
+            console.log('game is nog niet begonnen')
         }
 
-        function barrelAction() {
-            if (isGameStarted) {
-                console.log('bananaAction')
-            }else{
-                console.log('game has not started')
-            }
+    })
 
-        }
-    </script>
+
+</script>
 </body>
 
 </html>
