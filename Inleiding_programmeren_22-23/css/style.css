@@ -1,104 +1,148 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container{
-    width: 100%;
-    height: 100vh;
+body {
+    display: flex;
     background-image: url('../img/monkeybackground.jpg');
     background-size: cover;
     background-position: center;
 
-    display: flex;
-    align-items: space-between;
-    flex-direction: column;
-    justify-content: center;
 }
 
-h1{
+/*alles voor de .container-left*/
+
+.container-left {
+    width: 25%;
+    height: 100vh;
+    /*background: pink;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
     width: 100%;
     display: flex;
     justify-content: center;
     font-size: 70px;
 }
 
-.label{
+.knop--container {
+    height: 20%;
+    /*background-color: yellow;*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-left form{
+    width: 100%;
+    height: 50%;
+    /*background: brown;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-left section:last-child {
+    width: 100%;
+    height: 50%;
+    /*background: green;*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.soundButton {
+    width: 100px;
+    height: 100px;
+    margin-right: 1%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: solid 2px;
+}
+
+#banana {
+    background-image: url("../img/banana.png");
+}
+
+#barrel {
+    background-image: url("../img/barrel.png");
+}
+
+/**/
+
+/*alles voor de .container*/
+
+.container {
+    /*min-width: 700px;*/
+    width: 50%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*background: purple;*/
+}
+
+h2 {
+    font-size: 100px;
+    margin-top: 100px;
+    color: white;
+}
+
+
+.label {
     width: 100%;
     height: 10%;
-    /* background-color: red; */
+    /*background-color: red;*/
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.label button{
+.label input[type="button"] {
     width: 40px;
     height: 40px;
     margin-left: 10px;
     border: solid 1px;
 }
 
-.label input[type="text"]{
+.label input[type="text"] {
     height: 40px;
     width: 250px;
-    padding: 10px 10px 10px 1px ;
+    padding: 10px 10px 10px 1px;
     border: solid 1px;
 }
 
-.img-container{
-    width:100%;
+.img-container {
+    width: 100%;
     min-height: 300px;
     height: 60%;
     display: flex;
     justify-content: center;
-    /* background-color: green; */
-    padding-bottom: 20px;
+    /*background-color: green;*/
+    /*padding-bottom: 20px;*/
 }
 
-.img-container img{
-    height:100%;
-    margin: 10px 0 0 0;
+.img-container img {
+    height: 100%;
+    /*margin: 10px 0 0 0;*/
 }
 
-.knop--container{
-    height: 20%;
-    /* background-color: yellow; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/*alles voor progress*/
 
-.knop--container .button--container{
-    width: 50%;
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.button--container button{
-     width: 50px;
-     height: 50px;
-     margin-right: 1%;
-     background-position: center;
-     background-size: contain;
-     background-repeat:no-repeat;
-     border: solid 2px;
-}
-
-.button--container #banana{
-   background-image: url("../img/banana.png");
-}
-
-.button--container #barrel{
-    background-image: url("../img/barrel.png");
-}
-
-.button--container progress{
+.knop--container progress {
     -webkit-appearance: none;
     width: 90%;
     height: 50px;
@@ -106,12 +150,16 @@ h1{
     background-color: white;
 }
 
-progress::-webkit-progress-bar{
-    background: white ;
+.knop--container progress::-webkit-progress-bar {
+    background: white;
 }
-.banana-progress[value]::-webkit-progress-value{
+
+.banana-progress[value]::-webkit-progress-value {
     background-color: green;
 }
-.barrel-progress[value]::-webkit-progress-value{
+
+.barrel-progress[value]::-webkit-progress-value {
     background-color: red;
 }
+
+/**/

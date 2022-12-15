@@ -6,32 +6,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../Inleiding_programmeren_22-23/script/script.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+<div class="container-left">
+    <form id="form">
+
+        <h1>Monkey game</h1>
+        <div class="label">
+            <input placeholder="Naam*" type="text" name="name" id="nameInput">
+            <input value="Start" type="button" id="startGame"/>
+        </div>
+
+    </form>
+    <section>
+        <button onclick="playBananaSound()" class="soundButton" id="banana"></button>
+        <button onclick="playBarrelSound()" class="soundButton" id="barrel" id="barrel"></button>
+    </section>
+</div>
 <div class="container">
-    <h1>Monkey game</h1>
-    <div class="label">
-        <input type="text" name="" id="" placeholder="lorum ipsum">
-        <button onclick="startGame()" id="startGame"></button>
-    </div>
+
+    <h2 id="playerName">speler: </h2>
+
     <div class="img-container">
         <img id="diddyKong" src="#" alt="monkey"/>
     </div>
 
     <div class="knop--container">
-        <div class="button--container">
-            <button id="banana"></button>
-            <progress id="bananaProgressBar" class="banana-progress" max="100"></progress>
-        </div>
-        <div class="button--container">
-            <button id="barrel" id="barrel"></button>
-            <progress id="barrelProgressBar" class="barrel-progress" max="100"></progress>
-        </div>
+        <progress id="bananaProgressBar" class="banana-progress" max="100"></progress>
+        <progress id="barrelProgressBar" class="barrel-progress" max="100"></progress>
     </div>
 </div>
+
+<!--<div class="right">-->
+
+<!--</div>-->
+
 
 <script>
     let isGameStarted = false;
@@ -59,30 +71,36 @@
             break;
     }
 
-    function startGame() {
-        isGameStarted = true
-        console.log(isGameStarted)
+    //versturen van naam en game starten
+
+    let nameInput = document.getElementById('nameInput')
+    let form = document.getElementById('form')
+    let startButton = document.getElementById('startGame')
+    let playerName = document.getElementById('playerName')
+    isGameStarted = false
+
+    form.addEventListener("click", function (){
+        if(nameInput.value !== ""){
+            playerName.innerHTML += nameInput.value
+            isGameStarted = true
+            console.log(isGameStarted)
+        }
+
+    })
+    
+    //    functies voor het geluid afspelen
+
+    //banana
+    function playBananaSound() {
+        let bananaSound = new Audio('audio/banana.mp3');
+        bananaSound.play().then()
     }
 
-    bananaButton.addEventListener("click", function () {
-
-        if (isGameStarted) {
-            console.log('bananaAction')
-        } else {
-            console.log('game is nog niet begonnen')
-        }
-
-    })
-    barrelButton.addEventListener("click", function () {
-
-        if (isGameStarted) {
-            console.log('barrelAction')
-        } else {
-            console.log('game is nog niet begonnen')
-        }
-
-    })
-
+    //barrel
+    function playBarrelSound() {
+        let bananaSound = new Audio('audio/jumping-over-a-barrel.mp3');
+        bananaSound.play().then()
+    }
 
 </script>
 </body>
