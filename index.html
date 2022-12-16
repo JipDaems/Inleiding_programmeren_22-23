@@ -38,8 +38,8 @@
 <script>
 
     // sound variables
-    let bananaSound = new Audio('audio/banana.mp3');
-    let barrelSound = new Audio('audio/jumping-over-a-barrel.mp3');
+    let bananaSound = new Audio('audio/banana.mp3')
+    let barrelSound = new Audio('audio/jumping-over-a-barrel.mp3')
     let winningSound = new Audio('audio/winning-sound.mp3')
     let gameOverSound = new Audio('audio/game-over.mp3')
 
@@ -52,10 +52,10 @@
     let progressBarBarrel = document.getElementById('barrelProgressBar')
     let bananaButton = document.getElementById("banana")
     let barrelButton = document.getElementById("barrel")
-    let isGameStarted = false;
+    let isGameStarted = false
     let step
-    let diddyKong = document.getElementById('diddyKong');
-    let diddyLevel;
+    let diddyKong = document.getElementById('diddyKong')
+    let diddyLevel
 
     //om het spel te beginnen
     startGameButton.addEventListener("click", function () {
@@ -65,11 +65,11 @@
 
             //standard values for starting game
             diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png"
-            progressBarBanana.value = 0;
-            progressBarBarrel.value = 0;
+            progressBarBanana.value = 0
+            progressBarBarrel.value = 0
             diddyLevel = 1
             step = 10
-            gameStatus.innerHTML = "Spel is begonnen";
+            gameStatus.innerHTML = "Spel is begonnen"
         } else {
             gameStatus.innerHTML = "Vul je naam in"
         }
@@ -79,7 +79,7 @@
     bananaButton.addEventListener('click', function bananaButton() {
         if (isGameStarted) {
             // add steps to progress bar value
-            progressBarBanana.value += step;
+            progressBarBanana.value += step
             //play sound
             bananaSound.play()
 
@@ -88,14 +88,14 @@
             //upgrade diddy to level 2
             if (progressBarBanana.value >= 100 && diddyLevel === 1) {
                 diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png"
-                progressBarBanana.value = 0;
-                diddyLevel = 2;
+                progressBarBanana.value = 0
+                diddyLevel = 2
             }
             //update diddy to level 3
             if (progressBarBanana.value >= 100 && diddyLevel === 2) {
                 diddyKong.src = "../Inleiding_programmeren_22-23/img/diddydonkey.jpeg"
-                progressBarBanana.value = 0;
-                diddyLevel = 3;
+                progressBarBanana.value = 0
+                diddyLevel = 3
             }
             //game over, you won
             if (progressBarBanana.value >= 100 && diddyLevel === 3) {
@@ -117,7 +117,7 @@
     barrelButton.addEventListener('click', function bananaButton() {
         if (isGameStarted) {
             // add steps to progress bar value
-            progressBarBarrel.value += step;
+            progressBarBarrel.value += step
             //play sound
             barrelSound.play()
 
