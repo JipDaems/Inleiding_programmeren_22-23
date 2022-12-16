@@ -20,39 +20,33 @@
         </div>
     </form>
     <section>
-        <button onclick="playBananaSound()" class="soundButton" id="banana"></button>
-        <button onclick="playBarrelSound()" class="soundButton" id="barrel" id="barrel"></button>
+        <button class="soundButton" id="banana"></button>
+        <button class="soundButton" id="barrel"></button>
     </section>
 </div>
 <div class="container">
-
     <h2 id="playerName">speler: </h2>
-
+    <h3 id="gameStatus"></h3>
     <div class="img-container">
         <img id="diddyKong" src="../Inleiding_programmeren_22-23/img/diddykong.png" alt="monkey"/>
     </div>
-
     <div class="knop--container">
         <progress id="bananaProgressBar" class="banana-progress" max="100"></progress>
         <progress id="barrelProgressBar" class="barrel-progress" max="100"></progress>
     </div>
 </div>
-
-<!--<div class="right">-->
-
-<!--</div>-->
-
 <script>
 
     // sound variables
     let bananaSound = new Audio('audio/banana.mp3');
     let barrelSound = new Audio('audio/jumping-over-a-barrel.mp3');
-    let winningSound = new Audio('audio/winning-sound.pm3')
+    let winningSound = new Audio('audio/winning-sound.mp3')
     let gameOverSound = new Audio('audio/game-over.mp3')
 
     //variables for the game
     let nameInput = document.getElementById('nameInput')
-    let form = document.getElementById('form')
+    let gameStatus = document.getElementById('gameStatus')
+    let startGameButton = document.getElementById('startGame')
     let playerName = document.getElementById('playerName')
     let progressBarBanana = document.getElementById('bananaProgressBar')
     let progressBarBarrel = document.getElementById('barrelProgressBar')
@@ -63,7 +57,8 @@
     let diddyKong = document.getElementById('diddyKong');
     let diddyLevel;
 
-    form.addEventListener("click", function () {
+    //om het spel te beginnen
+    startGameButton.addEventListener("click", function () {
         if (nameInput.value !== "") {
             playerName.innerHTML = nameInput.value
             isGameStarted = true
@@ -73,16 +68,21 @@
             progressBarBanana.value = 0;
             progressBarBarrel.value = 0;
             diddyLevel = 1
-            step = 5
+            step = 10
+            gameStatus.innerHTML = "";d
             console.log(isGameStarted)
+        }else {
+            gameStatus.innerHTML = "Vul je naam in"
         }
     })
 
     //banana button click
     bananaButton.addEventListener('click', function bananaButton() {
         if (isGameStarted) {
+            // add steps to progress bar value
             progressBarBanana.value += step;
-            console.log(step)
+            //play sound
+            bananaSound.play()
 
             //upgrade diddy to level 2
             if (progressBarBanana.value >= 100 && diddyLevel === 1) {
@@ -101,59 +101,51 @@
                 winningSound.play()
                 diddyLevel = 1
                 isGameStarted = false
-                console.log(isGameStarted)
-                console.log("you won, click start to play again")
                 progressBarBarrel.value = 0
                 progressBarBanana.value = 0
-
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/winning.jpeg"
+                gameStatus.innerHTML = "Gij hebt gewonnen, klik op start om opieuw te beginnen"
             }
+
+        }else{
+            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
 
     //barrelbutton click
     barrelButton.addEventListener('click', function bananaButton() {
         if (isGameStarted) {
+            // add steps to progress bar value
             progressBarBarrel.value += step;
+            //play sound
+            barrelSound.play()
 
             //game over, you lost
             if (progressBarBarrel.value >= 100 && diddyLevel === 1) {
                 gameOverSound.play()
-                console.log("you lost, click start to play again")
                 isGameStarted = false
                 diddyKong.src = "../Inleiding_programmeren_22-23/img/game_over.jpeg"
+                gameStatus.innerHTML = "Gij hebt verloren, klik op start om opieuw te beginnen"
                 progressBarBarrel.value = 0
                 progressBarBanana.value = 0
             }
-
             // level down to lvl 1
             if (progressBarBarrel.value >= 100 && diddyLevel === 2) {
                 diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png"
                 diddyLevel = 1
                 progressBarBarrel.value = 0
             }
-
             //level down to lvl 2
             if (progressBarBarrel.value >= 100 && diddyLevel === 3) {
                 diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png"
                 diddyLevel = 2
                 progressBarBarrel.value = 0
             }
+
+        }else{
+            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
-
-    //    function for playing sound
-
-    function playBananaSound() {
-        if (isGameStarted) {
-            bananaSound.play()
-        }
-    }
-
-    function playBarrelSound() {
-        if (isGameStarted) {
-            barrelSound.play()
-        }
-    }
 
 </script>
 </body>
