@@ -13,13 +13,11 @@
 <body>
 <div class="container-left">
     <form id="form">
-
         <h1>Monkey game</h1>
         <div class="label">
             <input placeholder="Naam*" type="text" name="name" id="nameInput">
             <input value="Start" type="button" id="startGame"/>
         </div>
-
     </form>
     <section>
         <button onclick="playBananaSound()" class="soundButton" id="banana"></button>
@@ -31,7 +29,7 @@
     <h2 id="playerName">speler: </h2>
 
     <div class="img-container">
-        <img id="diddyKong" src="#" alt="monkey"/>
+        <img id="diddyKong" src="../Inleiding_programmeren_22-23/img/diddykong.png" alt="monkey"/>
     </div>
 
     <div class="knop--container">
@@ -44,62 +42,117 @@
 
 <!--</div>-->
 
-
 <script>
-    let isGameStarted = false;
-    let diddyLevel = 0;
-    let diddyKong = document.getElementById('diddyKong');
 
-    let progressBarBanana = document.getElementById('bananaProgressBar').value = 50
-    let progressBarBarrel = document.getElementById('barrelProgressBar').value = 50
+    // sound variables
+    let bananaSound = new Audio('audio/banana.mp3');
+    let barrelSound = new Audio('audio/jumping-over-a-barrel.mp3');
+    let winningSound = new Audio('audio/winning-sound.pm3')
+    let gameOverSound = new Audio('audio/game-over.mp3')
 
-    let bananaButton = document.getElementById("banana")
-    let barrelButton = document.getElementById("barrel")
-
-    switch (diddyLevel) {
-        case 0:
-            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png";
-            console.log(diddyLevel)
-            break;
-        case 1:
-            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png";
-            console.log(diddyLevel)
-            break;
-        case 2:
-            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddydonkey.jpeg";
-            console.log(diddyLevel)
-            break;
-    }
-
-    //versturen van naam en game starten
-
+    //variables for the game
     let nameInput = document.getElementById('nameInput')
     let form = document.getElementById('form')
-    let startButton = document.getElementById('startGame')
     let playerName = document.getElementById('playerName')
-    isGameStarted = false
+    let progressBarBanana = document.getElementById('bananaProgressBar')
+    let progressBarBarrel = document.getElementById('barrelProgressBar')
+    let bananaButton = document.getElementById("banana")
+    let barrelButton = document.getElementById("barrel")
+    let isGameStarted = false;
+    let step
+    let diddyKong = document.getElementById('diddyKong');
+    let diddyLevel;
 
-    form.addEventListener("click", function (){
-        if(nameInput.value !== ""){
-            playerName.innerHTML += nameInput.value
+    form.addEventListener("click", function () {
+        if (nameInput.value !== "") {
+            playerName.innerHTML = nameInput.value
             isGameStarted = true
+
+            //standard values for starting game
+            diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png"
+            progressBarBanana.value = 0;
+            progressBarBarrel.value = 0;
+            diddyLevel = 1
+            step = 5
             console.log(isGameStarted)
         }
-
     })
 
-    //    functies voor het geluid afspelen
+    //banana button click
+    bananaButton.addEventListener('click', function bananaButton() {
+        if (isGameStarted) {
+            progressBarBanana.value += step;
+            console.log(step)
 
-    //banana
+            //upgrade diddy to level 2
+            if (progressBarBanana.value >= 100 && diddyLevel === 1) {
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png"
+                progressBarBanana.value = 0;
+                diddyLevel = 2;
+            }
+            //update diddy to level 3
+            if (progressBarBanana.value >= 100 && diddyLevel === 2) {
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/diddydonkey.jpeg"
+                progressBarBanana.value = 0;
+                diddyLevel = 3;
+            }
+            //game over, you won
+            if (progressBarBanana.value >= 100 && diddyLevel === 3) {
+                winningSound.play()
+                diddyLevel = 1
+                isGameStarted = false
+                console.log(isGameStarted)
+                console.log("you won, click start to play again")
+                progressBarBarrel.value = 0
+                progressBarBanana.value = 0
+
+            }
+        }
+    })
+
+    //barrelbutton click
+    barrelButton.addEventListener('click', function bananaButton() {
+        if (isGameStarted) {
+            progressBarBarrel.value += step;
+
+            //game over, you lost
+            if (progressBarBarrel.value >= 100 && diddyLevel === 1) {
+                gameOverSound.play()
+                console.log("you lost, click start to play again")
+                isGameStarted = false
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/game_over.jpeg"
+                progressBarBarrel.value = 0
+                progressBarBanana.value = 0
+            }
+
+            // level down to lvl 1
+            if (progressBarBarrel.value >= 100 && diddyLevel === 2) {
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykong.png"
+                diddyLevel = 1
+                progressBarBarrel.value = 0
+            }
+
+            //level down to lvl 2
+            if (progressBarBarrel.value >= 100 && diddyLevel === 3) {
+                diddyKong.src = "../Inleiding_programmeren_22-23/img/diddykonglvl2.png"
+                diddyLevel = 2
+                progressBarBarrel.value = 0
+            }
+        }
+    })
+
+    //    function for playing sound
+
     function playBananaSound() {
-        let bananaSound = new Audio('audio/banana.mp3');
-        bananaSound.play().then()
+        if (isGameStarted) {
+            bananaSound.play()
+        }
     }
 
-    //barrel
     function playBarrelSound() {
-        let bananaSound = new Audio('audio/jumping-over-a-barrel.mp3');
-        bananaSound.play().then()
+        if (isGameStarted) {
+            barrelSound.play()
+        }
     }
 
 </script>
