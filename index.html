@@ -69,9 +69,8 @@
             progressBarBarrel.value = 0;
             diddyLevel = 1
             step = 10
-            gameStatus.innerHTML = "";d
-            console.log(isGameStarted)
-        }else {
+            gameStatus.innerHTML = "Spel is begonnen";
+        } else {
             gameStatus.innerHTML = "Vul je naam in"
         }
     })
@@ -83,6 +82,8 @@
             progressBarBanana.value += step;
             //play sound
             bananaSound.play()
+
+            gameStatus.innerHTML = ""
 
             //upgrade diddy to level 2
             if (progressBarBanana.value >= 100 && diddyLevel === 1) {
@@ -107,8 +108,8 @@
                 gameStatus.innerHTML = "Gij hebt gewonnen, klik op start om opieuw te beginnen"
             }
 
-        }else{
-            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
+        } else {
+                gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
 
@@ -119,6 +120,8 @@
             progressBarBarrel.value += step;
             //play sound
             barrelSound.play()
+
+            gameStatus.innerHTML = ""
 
             //game over, you lost
             if (progressBarBarrel.value >= 100 && diddyLevel === 1) {
@@ -142,8 +145,8 @@
                 progressBarBarrel.value = 0
             }
 
-        }else{
-            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
+        } else {
+                gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
 
