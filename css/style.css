@@ -147,6 +147,10 @@ h3{
 
 /*alles voor progress*/
 
+.knop--container p {
+    font-size: 75px;
+}
+
 .knop--container progress {
     -webkit-appearance: none;
     width: 90%;
@@ -166,5 +170,3 @@ h3{
 .barrel-progress[value]::-webkit-progress-value {
     background-color: red;
 }
-
-/**/

@@ -31,6 +31,7 @@
         <img id="diddyKong" src="../Inleiding_programmeren_22-23/img/diddykong.png" alt="monkey"/>
     </div>
     <div class="knop--container">
+        <p style="color:white" id="nameMonkey">Random naam</p>
         <progress id="bananaProgressBar" class="banana-progress" max="100"></progress>
         <progress id="barrelProgressBar" class="barrel-progress" max="100"></progress>
     </div>
@@ -57,6 +58,10 @@
     let diddyKong = document.getElementById('diddyKong')
     let diddyLevel
 
+    let nameMonkey = document.getElementById('nameMonkey');
+    let randomNameArray = Array("Diddy Kong", "Donkey Kong", 'Monkey Kong', 'Monkey Jobbe','Monkey Mobbe', "Aapje");
+
+
     //om het spel te beginnen
     startGameButton.addEventListener("click", function () {
         if (nameInput.value !== "") {
@@ -70,6 +75,14 @@
             diddyLevel = 1
             step = 10
             gameStatus.innerHTML = "Spel is begonnen"
+
+            if(isGameStarted){
+                // pick a random name from the array
+                let randomName = randomNameArray[Math.floor(Math.random()*randomNameArray.length)];
+                console.log(randomName)
+                nameMonkey.innerHTML = randomName
+            }
+
         } else {
             gameStatus.innerHTML = "Vul je naam in"
         }
@@ -109,7 +122,7 @@
             }
 
         } else {
-                gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
+            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
 
@@ -146,7 +159,7 @@
             }
 
         } else {
-                gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
+            gameStatus.innerHTML = "Je moet eerst het spel starten voordat je deze knoppen kunt gebruiken"
         }
     })
 
